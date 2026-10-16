@@ -717,6 +717,11 @@ function removeFromCart(id) {
 }
 
 function openCart() {
+  const toast = $('#toast');
+  if (toast) {
+    toast.classList.remove('show');
+    if (toastTimeoutId) clearTimeout(toastTimeoutId);
+  }
   const overlay = $('#cart-overlay');
   const panel = $('#cart-panel');
   if (overlay) overlay.hidden = false;
@@ -740,13 +745,19 @@ function closeCart() {
   }, 250);
 }
 
+let toastTimeoutId = null;
 function showToast(message) {
   const toast = $('#toast');
   if (!toast) return;
   toast.textContent = message;
   toast.classList.add('show');
-  clearTimeout(showToast.timeout);
-  showToast.timeout = setTimeout(() => toast.classList.remove('show'), 2400);
+  if (toastTimeoutId) {
+    clearTimeout(toastTimeoutId);
+  }
+  toastTimeoutId = setTimeout(() => {
+    toast.classList.remove('show');
+    toastTimeoutId = null;
+  }, 2200);
 }
 
 function buildOrderText(entries, totalPrice, zone) {
@@ -869,6 +880,14 @@ function init() {
 
   const cartOverlay = $('#cart-overlay');
   if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+  const toastEl = $('#toast');
+  if (toastEl) {
+    toastEl.addEventListener('click', () => {
+      toastEl.classList.remove('show');
+      if (toastTimeoutId) clearTimeout(toastTimeoutId);
+    });
+  }
 
   const sendBtn = $('#send-whatsapp');
   if (sendBtn) sendBtn.addEventListener('click', sendToWhatsApp);
