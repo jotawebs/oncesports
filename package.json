@@ -1,0 +1,8 @@
+{
+  "name": "once-sports",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Once Sports — catálogo mobile-first para pedidos por WhatsApp",
+  "scripts": { "start": "node server.js" },
+  "packageManager": "pnpm@10.12.1"
+}

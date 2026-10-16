@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>Once Sports | Suplementos deportivos en Valencia</title>
+    <meta name="description" content="Suplementos y ropa deportiva original en Valencia, Carabobo. Elige tu producto, arma tu pedido y recíbelo por delivery." />
+    <meta name="theme-color" content="#050608" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Once Sports | Decide con inteligencia" />
+    <meta property="og:description" content="Suplementación clara, marcas originales y delivery en Valencia, Carabobo." />
+    <meta property="og:site_name" content="Once Sports" />
+    <meta property="og:image" content="./public/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./public/logo.png" type="image/png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#catalogo">Saltar al catálogo</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#inicio" aria-label="Once Sports, inicio">
+          <img src="./public/logo.png" alt="Once Sports" class="header-logo" />
+          <span class="header-brand-name">ONCE <b>SPORTS</b></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo">Suplementos</a>
+          <a href="#como-pedir">Cómo pedir</a>
+          <a href="#faq">Preguntas</a>
+          <a href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a href="https://instagram.com/oncesportsvzla" target="_blank" rel="noreferrer">Instagram</a>
+        </nav>
+        <button class="cart-trigger" id="open-cart" type="button" aria-label="Abrir pedido">
+          <span class="cart-icon" aria-hidden="true">＋</span>
+          <span>Pedido</span>
+          <strong id="cart-count">0</strong>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-noise" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span> Valencia, Carabobo · solo delivery</p>
+          <h1 id="hero-title">Suplementación<br /><em>bien elegida.</em></h1>
+          <p class="hero-lede">Marcas originales, información clara y una forma más consciente de acompañar tu rutina. Decide con inteligencia.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">Explorar catálogo <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+            <a class="text-link" href="https://instagram.com/oncesportsvzla" target="_blank" rel="noreferrer">@oncesportsvzla</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Composición abstracta de energía y movimiento">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-stamp-original">
+            <img src="./public/logo.png" alt="Once Sports Insignia Oficial" />
+          </div>
+          <div class="hero-coordinate">10° 10′ N<br />68° 00′ O</div>
+        </div>
+        <div class="hero-bottomline"><span>SUPLEMENTOS / ROPA / CRITERIO</span><span>Hecho para tu rutina ↓</span></div>
+      </section>
+
+      <section class="ticker" aria-label="Propuesta de valor">
+        <div class="ticker-track">
+          <div class="ticker-group">
+            <span>100% ORIGINAL</span>
+            <span class="ticker-sep">•</span>
+            <span class="ticker-bcv">A TASA BCV</span>
+            <span class="ticker-sep">•</span>
+            <span>DELIVERY EN VALENCIA</span>
+            <span class="ticker-sep">•</span>
+            <span>DECIDE CON INTELIGENCIA</span>
+            <span class="ticker-sep">•</span>
+            <span>MARCAS GARANTIZADAS</span>
+            <span class="ticker-sep">•</span>
+            <span class="ticker-bcv">PAGOS A TASA BCV</span>
+            <span class="ticker-sep">•</span>
+          </div>
+          <div class="ticker-group" aria-hidden="true">
+            <span>100% ORIGINAL</span>
+            <span class="ticker-sep">•</span>
+            <span class="ticker-bcv">A TASA BCV</span>
+            <span class="ticker-sep">•</span>
+            <span>DELIVERY EN VALENCIA</span>
+            <span class="ticker-sep">•</span>
+            <span>DECIDE CON INTELIGENCIA</span>
+            <span class="ticker-sep">•</span>
+            <span>MARCAS GARANTIZADAS</span>
+            <span class="ticker-sep">•</span>
+            <span class="ticker-bcv">PAGOS A TASA BCV</span>
+            <span class="ticker-sep">•</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalogo" aria-labelledby="catalog-title">
+        <div class="section-intro">
+          <div>
+            <p class="section-kicker">01 / selección Once</p>
+            <h2 id="catalog-title">Nuestros<br /><span>favoritos.</span></h2>
+          </div>
+          <p class="section-note">Una selección para acompañar tu entrenamiento. Si un precio o una foto aún no aparece, lo indicamos: aquí no se inventa nada.</p>
+        </div>
+        <div class="catalog-toolbar">
+          <label class="search-field"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar producto o marca" aria-label="Buscar producto o marca" /></label>
+          <div class="filter-row" id="category-filters" role="group" aria-label="Filtrar por categoría"></div>
+          <label class="brand-select"><span>Marca</span><select id="brand-filter" aria-label="Filtrar por marca"><option value="all">Todas</option></select></label>
+        </div>
+        <div class="catalog-meta"><span id="result-count">Productos seleccionados</span><span class="catalog-status"><i></i> catálogo en actualización</span></div>
+        <div class="product-grid" id="product-grid" aria-live="polite">
+          <noscript><p>Activa JavaScript para explorar el catálogo y preparar tu pedido por WhatsApp.</p></noscript>
+        </div>
+        <div class="empty-state" id="empty-state" hidden><strong>No encontramos ese producto.</strong><span>Prueba con otra marca o categoría.</span></div>
+      </section>
+
+      <section class="order-section" id="como-pedir" aria-labelledby="order-title">
+        <div class="order-heading"><p class="section-kicker">02 / el ritual</p><h2 id="order-title">Tu rutina,<br /><span>a tu manera.</span></h2><p>Sin pasarelas ni formularios eternos. Tu pedido se conversa contigo, por WhatsApp.</p></div>
+        <div class="steps">
+          <article class="step"><span class="step-number">01</span><h3>Elige</h3><p>Explora productos, compara marcas y agrega lo que va contigo.</p></article>
+          <article class="step"><span class="step-number">02</span><h3>Envía</h3><p>Revisa tu pedido, escribe tu zona y envíalo directo a nuestro WhatsApp.</p></article>
+          <article class="step"><span class="step-number">03</span><h3>Recibe</h3><p>Coordinamos disponibilidad, pago y delivery hasta tu casa en Valencia.</p></article>
+        </div>
+      </section>
+
+      <section class="principles-section" aria-labelledby="principles-title">
+        <div class="principles-visual">
+          <span class="vertical-word">INTENCIÓN</span>
+          <div class="principle-mark">
+            <img src="./public/logo.png" alt="Once Sports" class="principle-logo-img" />
+          </div>
+        </div>
+        <div class="principles-copy"><p class="section-kicker">03 / nuestra forma</p><h2 id="principles-title">Más que<br /><span>suplementos.</span></h2><p>Te ayudamos a elegir según tu rutina, tu momento y la información real de cada etiqueta. Porque suplementar mejor también es saber por qué.</p><div class="principle-list"><div><b>01</b><span>Marcas 100% originales</span></div><div><b>02</b><span>Información sin promesas médicas</span></div><div><b>03</b><span>Atención cercana en Valencia</span></div></div></div>
+      </section>
+
+      <section class="faq-section" id="faq" aria-labelledby="faq-title">
+        <div><p class="section-kicker">04 / preguntas frecuentes</p><h2 id="faq-title">Antes de<br /><span>decidir.</span></h2></div>
+        <div class="faq-list">
+          <details><summary>¿Hacen delivery fuera de Valencia?<span>＋</span></summary><p>Actualmente trabajamos solo con delivery en Valencia, Carabobo. Escríbenos tu zona y confirmamos cobertura y tarifa.</p></details>
+          <details><summary>¿Cómo puedo pagar?<span>＋</span></summary><p>El pago se coordina por WhatsApp según disponibilidad y zona. No procesamos pagos dentro de esta página.</p></details>
+          <details><summary>¿Los productos son originales?<span>＋</span></summary><p>Sí. Trabajamos con marcas originales y te orientamos con la información visible en su etiqueta. Si algo está pendiente de confirmar, lo decimos.</p></details>
+          <details><summary>¿Puedo pedir asesoría?<span>＋</span></summary><p>Claro. Envíanos tu objetivo de entrenamiento y te ayudamos a revisar opciones sin prometer resultados médicos.</p></details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-top">
+        <a class="wordmark wordmark-footer" href="#inicio">
+          <img src="./public/logo.png" alt="Once Sports" class="footer-logo" />
+          <div class="wordmark-text">
+            <span>ONCE</span><b>SPORTS</b>
+          </div>
+        </a>
+        <div class="footer-contact-block">
+          <p>Suplementación con intención.<br />Valencia, Carabobo.</p>
+          <span class="footer-by-brand">by <b>jotawebs</b></span>
+        </div>
+        <a class="footer-cta" href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">Escribir por WhatsApp ↗</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 ONCE SPORTS</span>
+        <a href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">WhatsApp Oficial</a>
+        <a href="https://instagram.com/oncesportsvzla" target="_blank" rel="noreferrer">Instagram · @oncesportsvzla</a>
+        <span class="by-credit">by <b>jotawebs</b></span>
+        <span>Decide con inteligencia.</span>
+      </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay" hidden></div>
+    <aside class="cart-panel" id="cart-panel" aria-labelledby="cart-title" aria-hidden="true">
+      <div class="cart-drag-handle" aria-hidden="true"></div>
+      <div class="cart-head">
+        <div class="cart-head-brand">
+          <img src="./public/logo.png" alt="Once Sports" class="cart-logo-badge" />
+          <div>
+            <p class="section-kicker">Tu selección</p>
+            <h2 id="cart-title">Tu pedido <span id="cart-count-title">(0)</span></h2>
+          </div>
+        </div>
+        <button class="close-button" id="close-cart" type="button" aria-label="Cerrar pedido">×</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <div class="cart-empty"><span class="cart-empty-mark">＋</span><p>Tu pedido está vacío.</p><small>Agrega productos del catálogo para comenzar.</small></div>
+      </div>
+      <div class="cart-footer">
+        <label class="delivery-field" for="delivery-zone"><span>Zona o dirección de entrega</span><input id="delivery-zone" type="text" placeholder="Ej. El Trigal, Valencia (opcional)" /></label>
+        <div class="cart-total"><span>Total estimado</span><div><strong id="total-divisa">$0.00</strong></div></div>
+        <p class="cart-disclaimer">Los totales son estimados. Confirmamos disponibilidad y tarifa de delivery por WhatsApp.</p>
+        <button class="button button-whatsapp" id="send-whatsapp" type="button">Enviar pedido por WhatsApp <span aria-hidden="true">↗</span></button>
+        <a class="direct-wa-link" id="direct-wa-link" href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">Escribir directamente a WhatsApp ↗</a>
+      </div>
+    </aside>
+
+    <aside class="mobile-cart-bar" id="mobile-cart-bar" aria-label="Resumen de pedido rápido" hidden>
+      <div class="mcb-details">
+        <span class="mcb-badge" id="mcb-count">0</span>
+        <div class="mcb-info">
+          <span class="mcb-label">Tu pedido</span>
+          <strong class="mcb-total" id="mcb-total">$0.00</strong>
+        </div>
+      </div>
+      <button class="mcb-button" id="mcb-open-cart" type="button" aria-label="Ver y revisar pedido">
+        <span>Ver pedido</span>
+        <span class="mcb-arrow" aria-hidden="true">↗</span>
+      </button>
+    </aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
