@@ -18,4 +18,4 @@ Este módulo automatiza la consulta y sincronización de la tasa oficial de camb
 
 3. **Ejecución Automatizada:**
    - Puede ejecutarse localmente con `run_update.bat` o el sidecar programado de Antigravity (`CRON_TZ=America/Caracas 0 9 * * *`).
-   - GitHub Actions (`.github/workflows/update-bcv.yml`) mantiene actualizada la tasa en GitHub Pages.
+   - GitHub Actions (`.github/workflows/update-bcv.yml`) mantiene actualizada la tasa en GitHub Pages una sola vez al día (Lunes a Viernes a las 9:00 AM hora Caracas).
