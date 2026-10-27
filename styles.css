@@ -1018,12 +1018,25 @@ summary span { color: var(--terracotta); font-family: var(--body); font-size: 18
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+.mcb-dual-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 .mcb-total {
   color: var(--white);
   font-family: var(--display);
-  font-size: 20px;
+  font-size: 19px;
   line-height: .95;
   font-weight: 700;
+}
+.mcb-total-bs {
+  color: #7fb2d9;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
 }
 .mcb-button {
   padding: 0 16px;
@@ -1211,7 +1224,8 @@ summary span { color: var(--terracotta); font-family: var(--body); font-size: 18
 }
 .qty-num { min-width: 16px; font-size: 12px; font-weight: 700; text-align: center; }
 .cart-line-price { text-align: right; }
-.cart-line-price strong { font-family: var(--display); font-size: 20px; }
+.cart-line-price strong { display: block; font-family: var(--display); font-size: 19px; line-height: 1; }
+.cart-line-bs { display: block; font-size: 11px; color: #64748b; font-weight: 600; margin-top: 2px; }
 .remove-line {
   display: block;
   margin-left: auto;
@@ -1244,10 +1258,61 @@ summary span { color: var(--terracotta); font-family: var(--body); font-size: 18
   font-size: 16px; /* Evita zoom automático en Safari iOS */
 }
 .delivery-field input:focus { border-color: var(--blue); }
-.cart-total { display: flex; justify-content: space-between; align-items: end; padding: 12px 0; }
-.cart-total > span { color: #778694; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
-.cart-total div { text-align: right; }
-.cart-total strong { display: block; font-family: var(--display); font-size: 30px; line-height: .8; }
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0 10px;
+  border-top: 1px dashed var(--line);
+  margin-top: 6px;
+}
+.cart-total-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cart-total-labels > span {
+  color: #778694;
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.bcv-rate-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #0c4a6e;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  padding: 2px 6px;
+  width: fit-content;
+  letter-spacing: .02em;
+}
+.cart-total-values {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.cart-total-values strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: .9;
+  color: var(--ink);
+}
+.total-bs-amount {
+  display: block;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
 .cart-disclaimer { margin: 0 0 12px; color: #778694; font-size: 10px; line-height: 1.35; }
 .button-whatsapp {
   width: 100%;

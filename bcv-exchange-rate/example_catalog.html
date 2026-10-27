@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Web con Tasa Oficial BCV</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .rate-card { background: #0f172a; color: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .rate-card h2 { margin: 0 0 0.5rem 0; font-size: 1.25rem; color: #38bdf8; }
+    .rate-value { font-size: 2rem; font-weight: bold; color: #4ade80; }
+    .rate-meta { font-size: 0.875rem; color: #94a3b8; margin-top: 0.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .product-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .product-card h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    .usd-price { font-size: 1.1rem; font-weight: 600; color: #0284c7; }
+    .bs-price { font-size: 1.25rem; font-weight: bold; color: #16a34a; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="rate-card">
+      <h2>Tasa Oficial Banco Central de Venezuela (BCV)</h2>
+      <div id="tasa-usd" class="rate-value">Cargando tasa...</div>
+      <div id="tasa-meta" class="rate-meta">Sincronizando con bcv_rates.json...</div>
+    </div>
+
+    <h2>Productos en Catálogo</h2>
+    <div class="grid">
+      <div class="product-card" data-usd="15.00">
+        <h3>Producto A</h3>
+        <div class="usd-price">Ref. $15.00</div>
+        <div class="bs-price" id="p1-bs">Calculando...</div>
+      </div>
+      <div class="product-card" data-usd="45.50">
+        <h3>Producto B</h3>
+        <div class="usd-price">Ref. $45.50</div>
+        <div class="bs-price" id="p2-bs">Calculando...</div>
+      </div>
+      <div class="product-card" data-usd="120.00">
+        <h3>Producto C</h3>
+        <div class="usd-price">Ref. $120.00</div>
+        <div class="bs-price" id="p3-bs">Calculando...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Carga del JSON generado por el script de actualización
+    async function cargarTasaBCV() {
+      try {
+        const response = await fetch('./bcv_rates.json?t=' + new Date().getTime());
+        const data = await response.json();
+        
+        const tasaUsd = data.usd; // Valor numérico exacto
+        document.getElementById('tasa-usd').textContent = `${data.usd_raw} Bs./USD`;
+        document.getElementById('tasa-meta').textContent = `Fecha Valor: ${data.fecha_valor} | Última actualización: ${data.ultima_consulta}`;
+
+        // Actualizar todos los precios del catálogo
+        document.querySelectorAll('.product-card').forEach(card => {
+          const precioUsd = parseFloat(card.getAttribute('data-usd'));
+          const precioBs = precioUsd * tasaUsd;
+          const bsContainer = card.querySelector('.bs-price');
+          bsContainer.textContent = precioBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' Bs.';
+        });
+      } catch (error) {
+        console.error('Error al cargar la tasa del BCV:', error);
+        document.getElementById('tasa-usd').textContent = 'Error al cargar tasa';
+      }
+    }
+
+    cargarTasaBCV();
+  </script>
+</body>
+</html>

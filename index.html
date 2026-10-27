@@ -188,7 +188,16 @@
       </div>
       <div class="cart-footer">
         <label class="delivery-field" for="delivery-zone"><span>Zona o dirección de entrega</span><input id="delivery-zone" type="text" placeholder="Ej. El Trigal, Valencia (opcional)" /></label>
-        <div class="cart-total"><span>Total estimado</span><div><strong id="total-divisa">$0.00</strong></div></div>
+        <div class="cart-total">
+          <div class="cart-total-labels">
+            <span>Total estimado</span>
+            <span class="bcv-rate-badge" id="bcv-rate-note">Tasa BCV: Bs. 888,12</span>
+          </div>
+          <div class="cart-total-values">
+            <strong id="total-divisa">$0.00</strong>
+            <span class="total-bs-amount" id="total-bs">Bs. 0,00</span>
+          </div>
+        </div>
         <p class="cart-disclaimer">Los totales son estimados. Confirmamos disponibilidad y tarifa de delivery por WhatsApp.</p>
         <button class="button button-whatsapp" id="send-whatsapp" type="button">Enviar pedido por WhatsApp <span aria-hidden="true">↗</span></button>
         <a class="direct-wa-link" id="direct-wa-link" href="https://api.whatsapp.com/send?phone=584223581111" target="_blank" rel="noreferrer">Escribir directamente a WhatsApp ↗</a>
@@ -200,7 +209,10 @@
         <span class="mcb-badge" id="mcb-count">0</span>
         <div class="mcb-info">
           <span class="mcb-label">Tu pedido</span>
-          <strong class="mcb-total" id="mcb-total">$0.00</strong>
+          <div class="mcb-dual-price">
+            <strong class="mcb-total" id="mcb-total">$0.00</strong>
+            <span class="mcb-total-bs" id="mcb-total-bs">Bs. 0,00</span>
+          </div>
         </div>
       </div>
       <button class="mcb-button" id="mcb-open-cart" type="button" aria-label="Ver y revisar pedido">

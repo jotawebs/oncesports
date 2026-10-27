@@ -412,8 +412,43 @@ let cart = loadJson(CART_KEY, {});
 let activeCategory = 'all';
 let query = '';
 
+let bcvRate = 888.1183;
+let bcvFormattedRate = '888,12';
+let bcvDate = 'Miércoles, 28 Octubre 2026';
+
 const $ = (selector) => document.querySelector(selector);
 const money = (value) => (value == null ? 'Por confirmar' : `$${Number(value).toFixed(2)}`);
+const moneyBs = (value) => {
+  if (value == null || isNaN(value)) return 'Bs. —';
+  return 'Bs. ' + Number(value).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+
+async function loadBcvRate() {
+  try {
+    const res = await fetch('./bcv_rates.json?v=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.usd) {
+        bcvRate = Number(data.usd);
+        bcvFormattedRate = data.usd_formatted || data.usd.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        bcvDate = data.fecha_valor || '';
+        updateBcvDisplays();
+        renderCart();
+      }
+    }
+  } catch (err) {
+    console.warn('Usando tasa BCV por defecto:', err);
+  }
+}
+
+function updateBcvDisplays() {
+  const noteEl = $('#bcv-rate-note');
+  if (noteEl) {
+    noteEl.textContent = `Tasa BCV: Bs. ${bcvFormattedRate}`;
+    if (bcvDate) noteEl.title = `Fecha Valor BCV: ${bcvDate}`;
+  }
+}
+
 const normalize = (value) =>
   String(value || '')
     .toLocaleLowerCase('es')
@@ -656,6 +691,7 @@ function renderCart() {
           </div>
           <div class="cart-line-price">
             <strong>${product.price == null ? '—' : money(product.price * qty)}</strong>
+            ${product.price != null && bcvRate ? `<small class="cart-line-bs">${moneyBs(product.price * qty * bcvRate)}</small>` : ''}
           </div>
         </div>
       `
@@ -675,18 +711,24 @@ function renderCart() {
   }
 
   const totalPrice = entries.reduce((sum, { product, qty }) => sum + (product.price || 0) * qty, 0);
+  const totalBs = totalPrice * (bcvRate || 1);
 
   const totalEl = $('#total-divisa');
   if (totalEl) totalEl.textContent = money(totalPrice);
 
+  const totalBsEl = $('#total-bs');
+  if (totalBsEl) totalBsEl.textContent = moneyBs(totalBs);
+
   const mobileBar = $('#mobile-cart-bar');
   const mcbCount = $('#mcb-count');
   const mcbTotal = $('#mcb-total');
+  const mcbTotalBs = $('#mcb-total-bs');
   if (mobileBar) {
     if (count > 0) {
       mobileBar.hidden = false;
       if (mcbCount) mcbCount.textContent = count;
       if (mcbTotal) mcbTotal.textContent = money(totalPrice);
+      if (mcbTotalBs) mcbTotalBs.textContent = moneyBs(totalBs);
     } else {
       mobileBar.hidden = true;
     }
@@ -761,9 +803,15 @@ function showToast(message) {
 }
 
 function buildOrderText(entries, totalPrice, zone) {
+  const totalBs = totalPrice * (bcvRate || 1);
+  const formattedUsd = money(totalPrice);
+  const formattedBs = moneyBs(totalBs);
+  const bcvDisplay = bcvRate ? ` (Tasa oficial BCV: ${bcvFormattedRate || bcvRate.toFixed(2).replace('.', ',')} Bs.)` : '';
+
   const lines = entries.map(({ product, qty }) => {
-    const sub = product.price ? ` — ${money(product.price * qty)}` : '';
-    return `• ${qty} x ${product.brand} ${product.name} (${product.spec})${sub}`;
+    const subUsd = product.price ? ` — ${money(product.price * qty)}` : '';
+    const subBs = product.price && bcvRate ? ` (${moneyBs(product.price * qty * bcvRate)})` : '';
+    return `• ${qty} x ${product.brand} ${product.name} (${product.spec})${subUsd}${subBs}`;
   });
 
   return [
@@ -771,11 +819,13 @@ function buildOrderText(entries, totalPrice, zone) {
     '',
     ...lines,
     '',
-    `Total estimado: ${money(totalPrice)}`,
-    `Zona o dirección de entrega: ${zone || 'Por coordinar por chat (Valencia)'}`,
+    `💵 Total en divisas: ${formattedUsd}`,
+    `🇻🇪 Total en bolívares${bcvDisplay}: ${formattedBs}`,
+    `📍 Zona o dirección de entrega: ${zone || 'Por coordinar por chat (Valencia)'}`,
+    bcvDate ? `ℹ️ Fecha valor BCV: ${bcvDate}` : '',
     '',
     'Quedo atento/a para coordinar disponibilidad y delivery.'
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 
 function updateWhatsAppLinks(entries, totalPrice) {
@@ -905,6 +955,7 @@ function init() {
 
   renderProducts();
   renderCart();
+  loadBcvRate();
 }
 
 if (document.readyState === 'loading') {

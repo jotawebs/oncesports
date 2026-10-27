@@ -1,0 +1,15 @@
+﻿{
+    "usd":  888.1183,
+    "usd_raw":  "888,11830000",
+    "usd_formatted":  "888,12",
+    "fecha_valor":  "Miércoles, 28 Octubre 2026",
+    "fecha_valor_iso":  "2026-10-28T00:00:00-04:00",
+    "ultima_consulta":  "2026-10-27T18:52:00-04:00",
+    "fuente":  "Banco Central de Venezuela (https://www.bcv.org.ve/)",
+    "otras_divisas":  {
+                          "yuan":  133.2211,
+                          "lira":  17.8393,
+                          "euro":  989.719,
+                          "rublo":  11.0257
+                      }
+}
