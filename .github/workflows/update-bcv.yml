@@ -2,8 +2,8 @@ name: Actualizar Tasa Oficial BCV
 
 on:
   schedule:
-    # Lunes a Viernes únicamente a las 9:00 AM hora de Caracas (UTC 13:00)
-    - cron: '0 13 * * 1-5'
+    # Todos los días (lunes a domingo) a las 9:00 AM hora de Caracas (UTC 13:00)
+    - cron: '0 13 * * *'
   workflow_dispatch:
 
 permissions:
