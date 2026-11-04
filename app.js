@@ -73,7 +73,9 @@ async function cargarProductos() {
   }
 
   try {
-    const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+    // Cache-busting con timestamp para forzar lectura fresca (vital para navegadores como Instagram WebView)
+    const urlSinCache = `${SHEET_CSV_URL}&t=${new Date().getTime()}`;
+    const response = await fetch(urlSinCache, { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: Error al obtener inventario CSV`);
     }
