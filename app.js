@@ -3,375 +3,185 @@ const CONFIG = {
   INSTAGRAM_URL: 'https://instagram.com/oncesportsvzla'
 };
 
-const PRODUCTS = [
-  // ─── CREATINAS ───────────────────────────────────────────────
-  {
-    id: 'on-creatine',
-    brand: 'Optimum Nutrition',
-    name: 'Micronized Creatine Powder',
-    category: 'Creatinas',
-    spec: '300 g · 60 servicios · Unflavored',
-    price: 30,
-    code: 'ON',
-    available: true,
-    images: [
-      './public/products/on-creatine/1.webp',
-      './public/products/on-creatine/2.png'
-    ]
-  },
-  {
-    id: 'on-creatine-plus',
-    brand: 'Optimum Nutrition',
-    name: 'Creatine+ Enhanced 3-in-1',
-    category: 'Creatinas',
-    spec: '360 g · 40 servicios · Strawberry Peach',
-    price: 30,
-    code: 'ON+',
-    available: true,
-    images: [
-      './public/products/on-creatine-plus/1.png'
-    ]
-  },
-  {
-    id: 'muscletech-celltech',
-    brand: 'MuscleTech',
-    name: 'Cell-Tech Creactor HCl',
-    category: 'Creatinas',
-    spec: '120 servicios',
-    price: 40,
-    code: 'M',
-    available: true,
-    images: [
-      './public/products/muscletech-celltech/1.png',
-      './public/products/muscletech-celltech/2.png',
-      './public/products/muscletech-celltech/3.png'
-    ]
-  },
-  {
-    id: 'nutrex-creatine-60',
-    brand: 'Nutrex Research',
-    name: 'Creatine Monohydrate',
-    category: 'Creatinas',
-    spec: '300 g · 60 servicios · Unflavored',
-    price: 25,
-    code: 'N',
-    available: true,
-    images: [
-      './public/products/nutrex-creatine-60/1.png',
-      './public/products/nutrex-creatine-60/2.png',
-      './public/products/nutrex-creatine-60/3.png'
-    ]
-  },
-  {
-    id: 'nutrex-creatine',
-    brand: 'Nutrex Research',
-    name: 'Creatine Monohydrate',
-    category: 'Creatinas',
-    spec: '1000 g · 200 servicios',
-    price: 49.99,
-    code: 'N',
-    available: true,
-    images: [
-      './public/products/nutrex-creatine/1.png',
-      './public/products/nutrex-creatine/2.png',
-      './public/products/nutrex-creatine/3.png'
-    ]
-  },
-  {
-    id: 'rule-one-creatine',
-    brand: 'Rule One Proteins',
-    name: 'Creatine 100% Pure',
-    category: 'Creatinas',
-    spec: '150 g · 30 servicios · Unflavored',
-    price: 25,
-    code: 'R1',
-    available: true,
-    images: [
-      './public/products/rule-one-creatine/1.png',
-      './public/products/rule-one-creatine/2.png',
-      './public/products/rule-one-creatine/3.png'
-    ]
-  },
-  {
-    id: 'allmax-creatine',
-    brand: 'AllMax Nutrition',
-    name: 'Creatine Monohydrate Micronized',
-    category: 'Creatinas',
-    spec: '400 g · 80 servicios',
-    price: 35,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-creatine/1.jpg',
-      './public/products/allmax-creatine/2.jpg',
-      './public/products/allmax-creatine/3.jpg'
-    ]
-  },
+const SHEET_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vR4Df3wysyKpCUiB23CxEYupxwish5q748fLA8z0jum50XyLvvRX7KrjvzwtH6QK9mgCFHLnCjWxYle/pub?gid=1&single=true&output=csv';
 
-  // ─── GLUTAMINAS ──────────────────────────────────────────────
-  {
-    id: 'glutamine',
-    brand: 'Nutrex Research',
-    name: 'Glutamine Drive 100% Pure',
-    category: 'Glutaminas',
-    spec: '300 g · 60 servicios',
-    price: 25,
-    code: 'N',
-    available: true,
-    images: [
-      './public/products/glutamine/1.png',
-      './public/products/glutamine/2.png',
-      './public/products/glutamine/3.png'
-    ]
-  },
-  {
-    id: 'rule-one-glutamine',
-    brand: 'Rule One Proteins',
-    name: 'Glutamine 100% Pure',
-    category: 'Glutaminas',
-    spec: '375 g · 75 servicios · Unflavored',
-    price: 25,
-    code: 'R1',
-    available: true,
-    images: [
-      './public/products/rule-one-glutamine/1.png',
-      './public/products/rule-one-glutamine/2.png',
-      './public/products/rule-one-glutamine/3.png'
-    ]
-  },
+let PRODUCTS = [];
 
-  // ─── BCAA ────────────────────────────────────────────────────
-  {
-    id: 'allmax-bcaa',
-    brand: 'AllMax Nutrition',
-    name: 'BCAA 2:1:1 Fermented',
-    category: 'Aminoácidos y BCAA',
-    spec: '400 g · 80 servicios · 100% Puro',
-    price: 35,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-bcaa/1.jpg',
-      './public/products/allmax-bcaa/2.jpg',
-      './public/products/allmax-bcaa/3.jpg'
-    ]
-  },
-  {
-    id: 'rule-one-active-bcaa',
-    brand: 'Rule One Proteins',
-    name: 'Active BCAA + Electrolytes',
-    category: 'Aminoácidos y BCAA',
-    spec: '30 servicios · Blue Raspberry',
-    price: 25,
-    code: 'R1',
-    available: true,
-    images: [
-      './public/products/rule-one-active-bcaa/1.png',
-      './public/products/rule-one-active-bcaa/2.png',
-      './public/products/rule-one-active-bcaa/3.png'
-    ]
-  },
-  {
-    id: 'nutrex-amino',
-    brand: 'Nutrex Research',
-    name: 'BCAA Drive',
-    category: 'Aminoácidos y BCAA',
-    spec: '30 servicios',
-    price: 25,
-    code: 'N',
-    available: true,
-    images: [
-      './public/products/nutrex-amino/1.png',
-      './public/products/nutrex-amino/2.png',
-      './public/products/nutrex-amino/3.png'
-    ]
-  },
-  {
-    id: 'rule-one-amino',
-    brand: 'Rule One Proteins',
-    name: 'BCAA Fermented Amino',
-    category: 'Aminoácidos y BCAA',
-    spec: '30 servicios · Grape',
-    price: 25,
-    code: 'R1',
-    available: true,
-    images: [
-      './public/products/rule-one-amino/1.png',
-      './public/products/rule-one-amino/2.png',
-      './public/products/rule-one-amino/3.png'
-    ]
-  },
-
-  // ─── EAA ─────────────────────────────────────────────────────
-  {
-    id: 'eaa',
-    brand: 'AllMax Nutrition',
-    name: 'EAA Essential Amino Acids',
-    category: 'Aminoácidos y BCAA',
-    spec: '30 servicios · Espectro Completo',
-    price: 30,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/eaa/1.jpg',
-      './public/products/eaa/2.jpg',
-      './public/products/eaa/3.jpg'
-    ]
-  },
-  {
-    id: 'nutrex-eaa',
-    brand: 'Nutrex Research',
-    name: 'EAA+ Hydration',
-    category: 'Aminoácidos y BCAA',
-    spec: '30 servicios · Hidratación y Recuperación',
-    price: 35,
-    code: 'N',
-    available: true,
-    images: [
-      './public/products/nutrex-eaa/1.png',
-      './public/products/nutrex-eaa/2.png',
-      './public/products/nutrex-eaa/3.png'
-    ]
-  },
-
-  // ─── QUEMADORES ──────────────────────────────────────────────
-  {
-    id: 'hydroxycut-women',
-    brand: 'Hydroxycut',
-    name: 'Max for Women',
-    category: 'Quemadores',
-    spec: '70 cápsulas · Pérdida de Peso Femenina',
-    price: 50,
-    code: 'H',
-    available: true,
-    images: [
-      './public/products/hydroxycut-women/1.jpeg',
-      './public/products/hydroxycut-women/2.png',
-      './public/products/hydroxycut-women/3.jpg'
-    ]
-  },
-
-  // ─── RENDIMIENTO Y SALUD ─────────────────────────────────────
-  {
-    id: 'allmax-citrulline',
-    brand: 'AllMax Nutrition',
-    name: 'Citrulline Malate 2:1',
-    category: 'Rendimiento',
-    spec: '300 g · Bombeo y Óxido Nítrico',
-    price: 40,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-citrulline/1.jpeg',
-      './public/products/allmax-citrulline/2.jpeg',
-      './public/products/allmax-citrulline/3.jpeg'
-    ]
-  },
-  {
-    id: 'leucine',
-    brand: 'AllMax Nutrition',
-    name: 'Leucine Síntesis Proteica',
-    category: 'Rendimiento',
-    spec: '400 g · 100% Puro Grado Farmacéutico',
-    price: 40,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/leucine/1.jpg',
-      './public/products/leucine/2.jpg',
-      './public/products/leucine/3.jpg'
-    ]
-  },
-  {
-    id: 'beta-alanine',
-    brand: 'AllMax Nutrition',
-    name: 'Beta Alanine Resistencia Muscular',
-    category: 'Rendimiento',
-    spec: '400 g · Rendimiento Máximo',
-    price: 30,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/beta-alanine/1.jpg',
-      './public/products/beta-alanine/2.jpg',
-      './public/products/beta-alanine/3.jpg'
-    ]
-  },
-  {
-    id: 'arginine',
-    brand: 'AllMax Nutrition',
-    name: 'Arginine HCl Ultra Pure',
-    category: 'Rendimiento',
-    spec: '400 g · Vasodilatador y Bombeo',
-    price: 40,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/arginine/1.jpg',
-      './public/products/arginine/2.jpg',
-      './public/products/arginine/3.jpg'
-    ]
-  },
-  {
-    id: 'allmax-tudca',
-    brand: 'AllMax Nutrition',
-    name: 'Tudca Liver Support',
-    category: 'Rendimiento',
-    spec: '60 cápsulas · Salud Hepática Avanzada',
-    price: 55,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-tudca/1.jpeg',
-      './public/products/allmax-tudca/2.jpeg',
-      './public/products/allmax-tudca/3.jpeg'
-    ]
-  },
-  {
-    id: 'allmax-ksm66',
-    brand: 'AllMax Nutrition',
-    name: 'KSM-66 Ashwagandha',
-    category: 'Rendimiento',
-    spec: '60 cápsulas · Anti-estrés y Vitalidad',
-    price: 25,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-ksm66/1.jpeg',
-      './public/products/allmax-ksm66/2.jpeg',
-      './public/products/allmax-ksm66/3.jpeg'
-    ]
-  },
-  {
-    id: 'collagen',
-    brand: 'Rule One Proteins',
-    name: 'Collagen Peptides Tipo I y III',
-    category: 'Rendimiento',
-    spec: '25 servicios · Sin Sabor',
-    price: 30,
-    code: 'R1',
-    available: true,
-    images: [
-      './public/products/collagen/1.png',
-      './public/products/collagen/2.png',
-      './public/products/collagen/3.png'
-    ]
-  },
-  {
-    id: 'allmax-melatonin',
-    brand: 'AllMax Nutrition',
-    name: 'Melatonin Sueño y Recuperación',
-    category: 'Rendimiento',
-    spec: 'Cápsulas · Descanso Profundo',
-    price: 15,
-    code: 'A',
-    available: true,
-    images: [
-      './public/products/allmax-melatonin/1.png',
-      './public/products/allmax-melatonin/2.png'
-    ]
+/**
+ * Parser ligero para dividir texto CSV por comas (split(',')),
+ * preservando valores que contienen comas dentro de comillas (ej. "$30,00").
+ */
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
   }
-];
+  result.push(current.trim());
+  return result.map((col) => col.replace(/^["']|["']$/g, '').trim());
+}
+
+/**
+ * Normaliza y convierte textos de precio como "$30,00" o "30.00" a número.
+ */
+function parsePrice(value) {
+  if (value == null || value === '') return null;
+  const clean = String(value).replace(/["$\s]/g, '').replace(',', '.');
+  const num = parseFloat(clean);
+  return isNaN(num) ? null : num;
+}
+
+/**
+ * Construye la ruta de la imagen asumiendo que están en la carpeta ./assets/productos/
+ * + el nombre que viene en la columna Nombre_Archivo_Foto.
+ * Si ya viene como ruta relativa completa (ej: ./public/products/...) o URL remota, la respeta.
+ */
+function construirRutaFoto(nombreArchivo) {
+  if (!nombreArchivo) return './public/logo.png';
+  const clean = String(nombreArchivo).trim().replace(/^["']|["']$/g, '');
+  if (!clean) return './public/logo.png';
+
+  // Si ya tiene prefijo ./ o / o protocolo http/https
+  if (clean.startsWith('./') || clean.startsWith('/') || clean.startsWith('http://') || clean.startsWith('https://')) {
+    return clean;
+  }
+  // Asume la carpeta ./assets/productos/ + el nombre de la columna
+  return `./assets/productos/${clean}`;
+}
+
+/**
+ * Carga el catálogo de productos dinámicamente desde Google Sheets CSV.
+ */
+async function cargarProductos() {
+  const grid = $('#product-grid');
+  if (grid) {
+    grid.innerHTML = `
+      <div class="catalog-loading">
+        <span class="loading-spinner" aria-hidden="true"></span>
+        <p>Cargando inventario oficial en vivo...</p>
+      </div>`;
+  }
+
+  try {
+    const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: Error al obtener inventario CSV`);
+    }
+
+    const csvText = await response.text();
+    const rawLines = csvText.split(/\r?\n/).map((l) => l.trim()).filter((l) => l.length > 0);
+
+    // Identificar la fila de encabezados para ignorarla correctamente
+    // Columnas esperadas: ID_SKU, Categoria, Nombre_Producto, Descripcion_Corta,
+    // Precio_USD, Precio_Oferta_USD, Variantes_Opciones, Estado_Stock, Nombre_Archivo_Foto, Destacado
+    let headerIndex = rawLines.findIndex((l) => l.toUpperCase().includes('ID_SKU'));
+    if (headerIndex === -1) headerIndex = 0;
+
+    const dataLines = rawLines.slice(headerIndex + 1);
+
+    const KNOWN_BRANDS = [
+      'Optimum Nutrition',
+      'MuscleTech',
+      'Nutrex Research',
+      'Rule One Proteins',
+      'AllMax Nutrition',
+      'Nutrex',
+      'Rule One',
+      'AllMax',
+      'Hydroxycut'
+    ];
+
+    PRODUCTS = dataLines
+      .map((line) => {
+        const cols = parseCSVLine(line);
+        if (!cols || cols.length < 5) return null;
+
+        const [
+          idSku,
+          categoria,
+          nombreProducto,
+          descripcionCorta,
+          precioUsdRaw,
+          precioOfertaRaw,
+          variantesOpciones,
+          estadoStock,
+          nombreArchivoFoto,
+          destacado
+        ] = cols;
+
+        if (!idSku && !nombreProducto) return null;
+
+        const regularPrice = parsePrice(precioUsdRaw);
+        const offerPrice = parsePrice(precioOfertaRaw);
+        const effectivePrice = offerPrice !== null ? offerPrice : regularPrice;
+        const isAgotado = String(estadoStock || '').trim().toLowerCase() === 'agotado';
+
+        // Detección de marca inteligente para filtros
+        let brand = 'Once Sports';
+        let cleanName = (nombreProducto || idSku).trim();
+        for (const b of KNOWN_BRANDS) {
+          if (cleanName.toLowerCase().startsWith(b.toLowerCase())) {
+            brand = b;
+            const rest = cleanName.slice(b.length).trim();
+            if (rest) cleanName = rest;
+            break;
+          }
+        }
+
+        const rawFotos = (nombreArchivoFoto || '').split(/[;|]/).map((s) => s.trim()).filter(Boolean);
+        const images = rawFotos.length > 0 ? rawFotos.map(construirRutaFoto) : [construirRutaFoto(nombreArchivoFoto)];
+
+        return {
+          id: (idSku || `PROD-${Math.random().toString(36).substr(2, 7)}`).trim(),
+          sku: idSku ? idSku.trim() : '',
+          brand,
+          fullName: nombreProducto || '',
+          name: cleanName,
+          category: (categoria || 'General').trim(),
+          spec: (descripcionCorta || '').trim(),
+          price: effectivePrice,
+          regularPrice,
+          offerPrice,
+          variants: (variantesOpciones || '').trim(),
+          stockStatus: (estadoStock || 'Disponible').trim(),
+          available: !isAgotado,
+          isAgotado,
+          featured: String(destacado || '').trim().toUpperCase() === 'SI',
+          images
+        };
+      })
+      .filter(Boolean);
+
+    // Actualiza filtros, catálogo y pedido
+    setupFilters();
+    renderProducts();
+    renderCart();
+
+    const statusEl = document.querySelector('.catalog-status');
+    if (statusEl) {
+      statusEl.innerHTML = `<i></i> Inventario en vivo (${PRODUCTS.length} productos)`;
+    }
+  } catch (error) {
+    console.error('Error cargando inventario desde Google Sheets:', error);
+    if (grid) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <strong>No pudimos cargar el inventario en vivo.</strong>
+          <span>Verifica tu conexión a internet o intenta nuevamente en unos momentos.</span>
+        </div>`;
+    }
+  }
+}
 
 const CART_KEY = 'once-sports-cart-v1';
 const ZONE_KEY = 'once-sports-zone-v1';
@@ -462,7 +272,14 @@ function saveState() {
 }
 
 function getProduct(id) {
-  return PRODUCTS.find((product) => product.id === id);
+  if (!id) return null;
+  return PRODUCTS.find(
+    (product) =>
+      product.id === id ||
+      product.sku === id ||
+      String(product.id).toLowerCase() === String(id).toLowerCase() ||
+      product.fullName?.toLowerCase() === String(id).toLowerCase()
+  );
 }
 
 function categories() {
@@ -520,15 +337,19 @@ function renderProducts() {
   grid.innerHTML = products
     .map((product) => {
       const images = product.images && product.images.length > 0 ? product.images : ['./public/logo.png'];
+      const isAgotado = product.isAgotado;
+
       return `
-    <article class="product-card" data-card-id="${product.id}">
+    <article class="product-card ${isAgotado ? 'agotado is-out-of-stock' : ''}" data-card-id="${product.id}">
       <div class="product-gallery">
+        ${isAgotado ? '<span class="stock-badge stock-badge-agotado">Agotado</span>' : ''}
+        ${product.offerPrice && !isAgotado ? '<span class="stock-badge stock-badge-oferta">Oferta</span>' : ''}
         <div class="gallery-scroll" data-scroll-id="${product.id}" tabindex="0" aria-label="Fotos de ${product.name}">
           ${images
             .map(
               (img, idx) => `
             <div class="gallery-slide">
-              <img src="${img}" alt="${product.name} - Vista ${idx + 1}" loading="lazy" />
+              <img src="${img}" alt="${product.name} - Vista ${idx + 1}" loading="lazy" onerror="this.onerror=null; this.src='./public/logo.png';" />
             </div>
           `
             )
@@ -552,10 +373,28 @@ function renderProducts() {
         <h3>${product.name}</h3>
         <div class="product-spec">${product.spec}</div>
         <div class="price-block">
-          <div class="price ${product.price == null ? 'pending' : ''}"><label>Precio</label><strong>${money(product.price)}</strong></div>
+          ${
+            product.offerPrice
+              ? `<div class="price has-offer">
+                  <label>Precio</label>
+                  <div class="price-row">
+                    <strong>${money(product.offerPrice)}</strong>
+                    <del class="old-price">${money(product.regularPrice)}</del>
+                  </div>
+                 </div>`
+              : `<div class="price ${product.price == null ? 'pending' : ''}">
+                  <label>Precio</label>
+                  <strong>${money(product.price)}</strong>
+                 </div>`
+          }
         </div>
-        <button class="add-button" type="button" data-add="${product.id}">
-          ${product.available ? 'Agregar al pedido ＋' : 'Consultar por WhatsApp ↗'}
+        <button
+          class="add-button"
+          type="button"
+          data-add="${product.id}"
+          ${isAgotado ? 'disabled aria-disabled="true"' : ''}
+        >
+          ${isAgotado ? 'Agotado ✕' : 'Agregar al pedido ＋'}
         </button>
       </div>
     </article>
@@ -565,7 +404,7 @@ function renderProducts() {
 
   setupGalleryListeners();
 
-  grid.querySelectorAll('[data-add]').forEach((button) => {
+  grid.querySelectorAll('[data-add]:not([disabled])').forEach((button) => {
     button.addEventListener('click', () => {
       const id = button.dataset.add;
       addToCart(id);
@@ -627,7 +466,7 @@ function setupGalleryListeners() {
 
 function addToCart(id) {
   const product = getProduct(id);
-  if (!product) return;
+  if (!product || product.isAgotado || !product.available) return;
   cart[id] = (Number(cart[id]) || 0) + 1;
   saveState();
   renderCart();
@@ -636,6 +475,7 @@ function addToCart(id) {
   }
   bumpCartBadge();
   showToast(`✓ ${product.name} agregado al pedido`);
+}
 }
 
 function cartEntries() {
@@ -895,7 +735,7 @@ async function sendToWhatsApp() {
   }, 400);
 }
 
-function init() {
+async function init() {
   setupFilters();
 
   const searchInput = $('#search');
@@ -953,9 +793,9 @@ function init() {
     });
   }
 
-  renderProducts();
   renderCart();
   loadBcvRate();
+  await cargarProductos();
 }
 
 if (document.readyState === 'loading') {

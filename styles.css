@@ -512,10 +512,95 @@ a { touch-action: manipulation; }
   overflow: hidden;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(5,6,8,.03);
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform .15s ease, box-shadow .15s ease, opacity .2s ease;
 }
 .product-card:active {
   transform: scale(0.985);
+}
+
+/* ─── ESTADO DE STOCK AGOTADO ───────────────────────────────────────────── */
+.product-card.agotado,
+.product-card.is-out-of-stock {
+  opacity: 0.55 !important;
+  filter: grayscale(0.25);
+}
+.product-card.agotado:active,
+.product-card.is-out-of-stock:active {
+  transform: none !important;
+}
+.product-card.agotado .add-button,
+.product-card.is-out-of-stock .add-button,
+.product-card .add-button:disabled,
+.product-card .add-button[disabled] {
+  background: #cbd5e1 !important;
+  color: #64748b !important;
+  border-color: #cbd5e1 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ─── BADGES DE STOCK Y OFERTA ───────────────────────────────────────────── */
+.stock-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 6;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.stock-badge-agotado {
+  background: rgba(185, 28, 28, 0.92);
+  color: #ffffff;
+  border: 1px solid rgba(254, 202, 202, 0.4);
+}
+.stock-badge-oferta {
+  background: rgba(22, 101, 52, 0.92);
+  color: #ffffff;
+  border: 1px solid rgba(187, 247, 208, 0.4);
+}
+
+/* ─── PRECIO CON OFERTA ──────────────────────────────────────────────────── */
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.price-row .old-price {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+/* ─── SPINNER DE CARGA DEL CATÁLOGO ──────────────────────────────────────── */
+.catalog-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.loading-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid rgba(23, 105, 176, 0.15);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: catalogSpin 0.8s linear infinite;
+}
+@keyframes catalogSpin {
+  to { transform: rotate(360deg); }
 }
 
 .product-gallery {
