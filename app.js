@@ -478,7 +478,6 @@ function addToCart(id) {
   bumpCartBadge();
   showToast(`✓ ${product.name} agregado al pedido`);
 }
-}
 
 function cartEntries() {
   return Object.entries(cart)
